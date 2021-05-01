@@ -2,6 +2,8 @@
 
 Build a one-stop Sklearn data processing Pipeline and fit a benchmark LASSO or massive ExtraTrees classifier to detect fraudlent credit card transactions for the [IEEE-CIS Fraud Detection Kaggle competition](https://www.kaggle.com/c/ieee-fraud-detection/).
 
+<img align="center" src="https://raw.githubusercontent.com/ffineis/ieee-cis-fraud-detection/master/data/output/processor_pipeline.png" alt="pipeline" />
+
 ### Get the data
 Log into Kaggle (or set up the kaggle python CLI) and download the competition data from https://www.kaggle.com/c/ieee-fraud-detection/data and unzip the contents of the downloaded .zip file.
 

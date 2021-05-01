@@ -78,13 +78,13 @@ def rank_missingness(X, top_n=None, figsize=None):
 
 def find_brutally_categorical_features(X, brutal=20):
     """
-    Find brutally categorical features, i.e. categorical features with > k unique levels.
+    Find brutally categorical features, i.e. categorical features with >= k unique levels.
 
     Parameters
     ------------
     dat: pd.DataFrame consisting only of categorical features
     brutal: {int > 0} number of unique levels found in a feature before the feature
-            is declared "brutally categorical"
+            is declared "brutally categorical". Default is 20.
 
     Returns
     ------------

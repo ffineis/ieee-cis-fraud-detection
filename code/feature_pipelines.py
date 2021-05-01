@@ -39,6 +39,7 @@ def find_pipeline_params(p, pattern, verbose=False):
 def categorical_feature_pipeline(X
                                  , categorical_string_features
                                  , categorical_numeric_features
+                                 , hi_cardinality_cutoff=20
                                  , binarize=True
                                  , binarize_cutoff=0.5):
     """
@@ -51,6 +52,8 @@ def categorical_feature_pipeline(X
                                  categorical features
     categorical_numeric_features: {list of str} column names in X representing float/int-valued
                                  categorical features
+    hi_cardinality_cutoff: {int > 0} number of unique levels in a categorical feature, k, where >=k levels
+                            qualifies a high-cardinality feature. See eda.find_brutally_categorical_features
     binarize: {bool} should high-missingness features be binarized with MissingIndicator?
     binarize_cutoff: {float in [0, 1]} threshold above which we create a binary variable
                     for each feature with a missingness rate > binarize_cutoff
@@ -65,7 +68,8 @@ def categorical_feature_pipeline(X
     cat_missing_dat = rank_missingness(X[cat_features])
 
     # -- find high-cardinality categorical features
-    hi_card_features = find_brutally_categorical_features(X[cat_features])
+    hi_card_features = find_brutally_categorical_features(X[cat_features]
+                                                          , brutal=hi_cardinality_cutoff)
 
     # -- separate categorical features into 4 groups for feature preprocessing:
     # -- (string/numeric data type, high/lo-cardinality) groups.
